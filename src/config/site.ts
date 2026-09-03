@@ -6,7 +6,7 @@ export const siteConfig = {
   phoneHref: 'tel:+919944389519',
   whatsapp: '+91 99443 89519',
   whatsappHref: 'https://wa.me/919944389519',
-  email: 'hello@example.com',
+  email: 'universehomecareservices@gmail.com',
   location: 'Coimbatore, Tamil Nadu, India',
   socialLinks: {
     facebook: '#',
