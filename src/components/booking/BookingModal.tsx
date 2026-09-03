@@ -19,7 +19,7 @@ export function BookingModal({ isOpen, onClose, initialService }: { isOpen: bool
         </div>
         
         <div className="p-6 overflow-y-auto flex-1">
-          <BookingForm onSuccess={() => setTimeout(onClose, 2000)} initialService={initialService} />
+          <BookingForm initialService={initialService} />
         </div>
       </div>
     </div>

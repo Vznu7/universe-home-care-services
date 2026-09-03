@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/Button';
 import { CheckCircle2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-export function BookingForm({ onSuccess, initialService }: { onSuccess: () => void, initialService?: string }) {
+export function BookingForm({ initialService }: { initialService?: string }) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
