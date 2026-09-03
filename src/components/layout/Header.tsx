@@ -20,13 +20,10 @@ export function Header() {
       <header className="sticky top-0 z-40 w-full bg-white border-b shadow-sm">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           {/* Actual Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo.png" alt="Universe Home Care Services Logo" width={48} height={48} className="w-12 h-12 object-contain" />
-            <div className="hidden sm:block">
-              <div className="font-bold text-xl text-teal-900 leading-tight">{siteConfig.name}</div>
-              {siteConfig.caption && (
-                <div className="text-xs font-medium text-teal-600 tracking-wide uppercase mt-0.5">{siteConfig.caption}</div>
-              )}
+          <Link href="/" className="flex items-center space-x-2 shrink-0">
+            <Image src="/logo.png" alt="Universe Home Care Services Logo" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+            <div className="block">
+              <div className="font-bold text-[13px] sm:text-xl text-teal-900 leading-tight max-w-[120px] sm:max-w-none whitespace-normal sm:whitespace-nowrap">{siteConfig.name}</div>
             </div>
           </Link>
 
@@ -107,13 +104,19 @@ export function Header() {
             <Button onClick={() => setIsBookingOpen(true)}>Book Now</Button>
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden p-2 text-slate-600"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Phone & Menu Toggle */}
+          <div className="flex items-center space-x-2 md:hidden">
+            <a href={siteConfig.phoneHref} className="flex items-center text-teal-700 bg-teal-50 px-2.5 py-1.5 rounded-md font-bold text-[13px]">
+              <Phone className="w-3.5 h-3.5 mr-1.5" />
+              {siteConfig.phone}
+            </a>
+            <button 
+              className="p-2 text-slate-600 bg-slate-50 rounded-md"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
