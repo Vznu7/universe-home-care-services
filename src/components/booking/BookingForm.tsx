@@ -120,27 +120,21 @@ export function BookingForm({ onSuccess, initialService }: { onSuccess: () => vo
           
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Preferred Date</label>
+              <label className="block text-sm font-medium text-slate-700 mb-1">Preferred Date <span className="text-slate-400 font-normal">(Optional)</span></label>
               <input type="date" {...register('preferred_date')} className="w-full p-2 border rounded-md text-slate-900 bg-white" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Preferred Time</label>
+              <label className="block text-sm font-medium text-slate-700 mb-1">Preferred Time <span className="text-slate-400 font-normal">(Optional)</span></label>
               <input type="time" {...register('preferred_time')} className="w-full p-2 border rounded-md text-slate-900 bg-white" />
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* STEP 3 */}
-      <div className={step === 3 ? 'block' : 'hidden'}>
-        <h3 className="text-lg font-medium text-slate-800 mb-4">Step 3: Additional Information</h3>
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Care Requirements / Details</label>
-            <textarea {...register('care_details')} rows={3} className="w-full p-2 border rounded-md text-slate-900 bg-white" placeholder="Briefly describe the condition or specific needs..."></textarea>
+          <div className="pt-2">
+            <label className="block text-sm font-medium text-slate-700 mb-1">Care Requirements / Details <span className="text-slate-400 font-normal">(Optional)</span></label>
+            <textarea {...register('care_details')} rows={2} className="w-full p-2 border rounded-md text-slate-900 bg-white" placeholder="Briefly describe the condition or specific needs..."></textarea>
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Additional Message</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Additional Message <span className="text-slate-400 font-normal">(Optional)</span></label>
             <textarea {...register('message')} rows={2} className="w-full p-2 border rounded-md text-slate-900 bg-white" placeholder="Any other information we should know..."></textarea>
           </div>
         </div>
@@ -152,7 +146,7 @@ export function BookingForm({ onSuccess, initialService }: { onSuccess: () => vo
           <Button type="button" variant="outline" onClick={prevStep}>Back</Button>
         ) : <div></div>}
         
-        {step < 3 ? (
+        {step < 2 ? (
           <Button type="button" onClick={nextStep}>Next Step</Button>
         ) : (
           <Button type="submit" disabled={isSubmitting}>
