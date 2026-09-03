@@ -111,3 +111,55 @@ export function LeadNotesManager({ lead }: { lead: any }) {
     </div>
   );
 }
+
+export function LeadDeleteManager({ leadId }: { leadId: string }) {
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  const handleDelete = async () => {
+    setIsDeleting(true);
+    const { deleteLead } = await import('@/app/actions/admin');
+    await deleteLead(leadId);
+    window.location.href = '/admin/leads';
+  };
+
+  if (!showConfirm) {
+    return (
+      <div className="mt-8 pt-6 flex justify-end">
+        <button 
+          onClick={() => setShowConfirm(true)}
+          className="text-red-600 hover:text-red-800 text-sm font-medium px-4 py-2 rounded-md hover:bg-red-50 transition-colors border border-transparent hover:border-red-200"
+        >
+          Delete Lead
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-8">
+      <div className="bg-red-50 p-4 rounded-lg border border-red-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h4 className="text-red-800 font-medium">Are you sure you want to delete this lead?</h4>
+          <p className="text-red-600 text-sm mt-1">This action cannot be undone and it will be permanently removed from the database.</p>
+        </div>
+        <div className="flex items-center space-x-3 shrink-0">
+          <button 
+            onClick={() => setShowConfirm(false)}
+            className="text-slate-600 hover:text-slate-800 text-sm font-medium px-3 py-2"
+            disabled={isDeleting}
+          >
+            Cancel
+          </button>
+          <button 
+            onClick={handleDelete}
+            disabled={isDeleting}
+            className="bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors shadow-sm"
+          >
+            {isDeleting ? 'Deleting...' : 'Yes, Delete'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

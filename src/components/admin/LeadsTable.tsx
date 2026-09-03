@@ -117,12 +117,27 @@ export function LeadsTable({ initialLeads }: { initialLeads: any[] }) {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <Link 
-                        href={`/admin/leads/${lead.id}`}
-                        className="text-teal-600 hover:text-teal-900 bg-teal-50 hover:bg-teal-100 px-3 py-1.5 rounded-md transition-colors"
-                      >
-                        View Details
-                      </Link>
+                      <div className="flex items-center justify-end space-x-2">
+                        <Link 
+                          href={`/admin/leads/${lead.id}`}
+                          className="text-teal-600 hover:text-teal-900 bg-teal-50 hover:bg-teal-100 px-3 py-1.5 rounded-md transition-colors"
+                        >
+                          View Details
+                        </Link>
+                        <button
+                          onClick={async () => {
+                            if (window.confirm('Are you sure you want to delete this lead?')) {
+                              const { deleteLead } = await import('@/app/actions/admin');
+                              await deleteLead(lead.id);
+                              window.location.reload();
+                            }
+                          }}
+                          className="text-red-600 hover:text-red-900 bg-red-50 hover:bg-red-100 p-1.5 rounded-md transition-colors"
+                          title="Delete Lead"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))

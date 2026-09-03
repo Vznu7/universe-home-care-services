@@ -1,7 +1,7 @@
 import { getLeadDetails } from '@/app/actions/admin';
 import Link from 'next/link';
 import { ChevronLeft, User, Phone, MapPin, Calendar, Activity, MessageSquare } from 'lucide-react';
-import { LeadStatusManager, LeadNotesManager } from '@/components/admin/LeadManagers';
+import { LeadStatusManager, LeadNotesManager, LeadDeleteManager } from '@/components/admin/LeadManagers';
 
 export default async function LeadDetailsPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
@@ -126,6 +126,7 @@ export default async function LeadDetailsPage({ params }: { params: Promise<{ id
 
       <LeadStatusManager lead={lead} />
       <LeadNotesManager lead={lead} />
+      <LeadDeleteManager leadId={lead.id} />
 
     </div>
   );

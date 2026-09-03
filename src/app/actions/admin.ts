@@ -110,3 +110,16 @@ export async function updateLeadNotes(id: string, notes: string) {
   revalidatePath(`/admin/leads/${id}`);
   return { success: true };
 }
+
+export async function deleteLead(id: string) {
+  const isAdmin = await checkIsAdmin();
+  if (!isAdmin) return { error: 'Unauthorized' };
+
+  const supabase = await createClient();
+  const { error } = await supabase.from('leads').delete().eq('id', id);
+  if (error) return { error: 'Failed to delete lead' };
+
+  revalidatePath('/admin');
+  revalidatePath('/admin/leads');
+  return { success: true };
+}
