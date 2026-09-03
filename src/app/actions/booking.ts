@@ -47,7 +47,7 @@ export async function submitBooking(formData: FormData) {
 
     // Sync with Google Sheets via Webhook
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbylzk1ULZgqw7AN_LoryFXPzmaY9-vmUj827g8xYUqlTVxPziK_nTw5EcdO4s8nat8c/exec', {
+      await fetch('https://script.google.com/macros/s/AKfycbylzk1ULZgqw7AN_LoryFXPzmAy9-vmUj827g8xYUqITVxPziK_nTw5EcdO4s8nat8c/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(validatedData)
