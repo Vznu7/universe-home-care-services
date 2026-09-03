@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { FloatingWhatsApp } from '@/components/layout/FloatingWhatsApp';
+
 import { siteConfig } from '@/config/site';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -32,12 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} min-h-screen flex flex-col bg-slate-50`}>
-        <Header />
-        <div className="flex-1">
-          {children}
-        </div>
-        <Footer />
-        <FloatingWhatsApp />
+        {children}
       </body>
     </html>
   );
