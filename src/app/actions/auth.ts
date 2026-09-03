@@ -13,8 +13,8 @@ export async function login(formData: FormData) {
     return { error: 'Email and password are required' };
   }
 
-  // DEMO MODE BYPASS
-  if (email === 'admin@universe.com' && password === 'admin123') {
+  // ADMIN LOGIN BYPASS
+  if (email === 'universehomecareservices@gmail.com' && password === 'Vishnu1008@') {
     const cookieStore = await cookies();
     cookieStore.set('demo_admin_session', 'true', { path: '/' });
     revalidatePath('/admin', 'layout');
