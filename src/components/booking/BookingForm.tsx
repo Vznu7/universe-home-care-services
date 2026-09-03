@@ -8,8 +8,10 @@ import { submitBooking } from '@/app/actions/booking';
 import { services } from '@/data/services';
 import { Button } from '@/components/ui/Button';
 import { CheckCircle2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export function BookingForm({ onSuccess, initialService }: { onSuccess: () => void, initialService?: string }) {
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -52,8 +54,7 @@ export function BookingForm({ onSuccess, initialService }: { onSuccess: () => vo
     
     setIsSubmitting(false);
     if (result.success) {
-      setIsSuccess(true);
-      onSuccess();
+      router.push('/thank-you');
     } else {
       setServerError(result.error || 'Something went wrong.');
     }
