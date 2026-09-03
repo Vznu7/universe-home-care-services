@@ -64,10 +64,12 @@ export function Header() {
             <Link href="/about" className="text-slate-700 hover:text-teal-700 font-medium">
               About Us
             </Link>
+
+            <Link href="/contact" className="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Contact</Link>
             
             <div className="relative group">
               <button 
-                className="flex items-center space-x-1 text-slate-700 hover:text-teal-700 font-medium"
+                className="hidden items-center space-x-1 text-slate-700 hover:text-teal-700 font-medium"
                 onMouseEnter={() => setIsContactOpen(true)}
                 onMouseLeave={() => setIsContactOpen(false)}
               >
