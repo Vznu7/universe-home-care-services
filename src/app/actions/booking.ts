@@ -45,6 +45,17 @@ export async function submitBooking(formData: FormData) {
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
 
+    // Sync with Google Sheets via Webhook
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbylzk1ULZgqw7AN_LoryFXPzmaY9-vmUj827g8xYUqlTVxPziK_nTw5EcdO4s8nat8c/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(validatedData)
+      });
+    } catch (sheetError) {
+      console.error('Failed to sync to Google Sheets:', sheetError);
+    }
+
     return { success: true };
   } catch (error: any) {
     console.error('Validation or Server Error:', error);
