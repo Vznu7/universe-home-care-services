@@ -42,10 +42,10 @@ export function LeadStatusManager({ lead }: { lead: any }) {
           <select 
             value={status} 
             onChange={(e) => setStatus(e.target.value)}
-            className="block w-full p-2.5 border border-slate-300 rounded-lg focus:ring-teal-500 focus:border-teal-500 text-sm bg-white"
+            className="block w-full p-2.5 border border-slate-300 rounded-lg focus:ring-teal-500 focus:border-teal-500 text-sm bg-white text-slate-900"
           >
             {statuses.map(s => (
-              <option key={s.value} value={s.value}>{s.label}</option>
+              <option key={s.value} value={s.value} className="text-slate-900">{s.label}</option>
             ))}
           </select>
         </div>
@@ -90,7 +90,7 @@ export function LeadNotesManager({ lead }: { lead: any }) {
             value={notes} 
             onChange={(e) => setNotes(e.target.value)}
             rows={5}
-            className="block w-full p-3 border border-slate-300 rounded-lg focus:ring-teal-500 focus:border-teal-500 text-sm bg-slate-50"
+            className="block w-full p-3 border border-slate-300 rounded-lg focus:ring-teal-500 focus:border-teal-500 text-sm bg-slate-50 text-slate-900"
             placeholder="Add internal notes about the patient's condition, follow-up calls, quotations, etc..."
           />
         </div>
