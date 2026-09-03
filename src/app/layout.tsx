@@ -8,17 +8,18 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: `Home Healthcare | ${siteConfig.name}`,
+    default: `UNIVERSE HOME CARE SERVICES | Best Home Care in Coimbatore`,
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.description,
+  description: 'Universe Home Care Services provides the best home healthcare, nursing, elder care, and patient support in Coimbatore. Care that feels like family.',
+  keywords: ['Universe Home Care', 'Universe Home Care Services', 'Home Care Coimbatore', 'Elder Care Coimbatore', 'Nursing Service at home Coimbatore', 'Patient Care Coimbatore'],
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://example.com',
+    url: 'https://www.universehomecare.org',
     siteName: siteConfig.name,
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: `UNIVERSE HOME CARE SERVICES | Best Home Care in Coimbatore`,
+    description: 'Universe Home Care Services provides the best home healthcare, nursing, elder care, and patient support in Coimbatore.',
   },
 };
 
