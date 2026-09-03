@@ -40,9 +40,7 @@ export async function getDashboardStats() {
   const isAdmin = await checkIsAdmin();
   if (!isAdmin) throw new Error('Unauthorized');
 
-  if (await isDemoMode()) {
-    return { total: 3, new: 1, contacted: 1, scheduled: 1, confirmed: 0, completed: 0 };
-  }
+  // Fetch real stats from Supabase
 
   const supabase = await createClient();
   const { data, error } = await supabase.from('leads').select('status, created_at');
@@ -62,13 +60,6 @@ export async function getLeads(limit?: number, status?: string) {
   const isAdmin = await checkIsAdmin();
   if (!isAdmin) throw new Error('Unauthorized');
 
-  if (await isDemoMode()) {
-    let leads = [...MOCK_LEADS];
-    if (status && status !== 'all') leads = leads.filter(l => l.status === status);
-    if (limit) leads = leads.slice(0, limit);
-    return leads;
-  }
-
   const supabase = await createClient();
   let query = supabase.from('leads').select('*').order('created_at', { ascending: false });
   if (limit) query = query.limit(limit);
@@ -83,11 +74,7 @@ export async function getLeadDetails(id: string) {
   const isAdmin = await checkIsAdmin();
   if (!isAdmin) throw new Error('Unauthorized');
 
-  if (await isDemoMode()) {
-    const lead = MOCK_LEADS.find(l => l.id === id);
-    if (!lead) throw new Error('Lead not found');
-    return lead;
-  }
+  // Fetch real details from Supabase
 
   const supabase = await createClient();
   const { data, error } = await supabase.from('leads').select('*').eq('id', id).single();
@@ -99,11 +86,7 @@ export async function updateLeadStatus(id: string, status: string) {
   const isAdmin = await checkIsAdmin();
   if (!isAdmin) return { error: 'Unauthorized' };
 
-  if (await isDemoMode()) {
-    revalidatePath('/admin/leads');
-    revalidatePath(`/admin/leads/${id}`);
-    return { success: true };
-  }
+  // Update real status in Supabase
 
   const supabase = await createClient();
   const { error } = await supabase.from('leads').update({ status, updated_at: new Date().toISOString() }).eq('id', id);
@@ -118,10 +101,7 @@ export async function updateLeadNotes(id: string, notes: string) {
   const isAdmin = await checkIsAdmin();
   if (!isAdmin) return { error: 'Unauthorized' };
 
-  if (await isDemoMode()) {
-    revalidatePath(`/admin/leads/${id}`);
-    return { success: true };
-  }
+  // Update real notes in Supabase
 
   const supabase = await createClient();
   const { error } = await supabase.from('leads').update({ internal_notes: notes, updated_at: new Date().toISOString() }).eq('id', id);
