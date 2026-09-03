@@ -10,10 +10,10 @@ export async function submitBooking(formData: FormData) {
       phone: formData.get('phone') as string,
       city: formData.get('city') as string,
       service: formData.get('service') as string,
-      preferred_date: formData.get('preferred_date') as string || null,
-      preferred_time: formData.get('preferred_time') as string || null,
-      care_details: formData.get('care_details') as string || null,
-      message: formData.get('message') as string || null,
+      preferred_date: (formData.get('preferred_date') as string) || undefined,
+      preferred_time: (formData.get('preferred_time') as string) || undefined,
+      care_details: (formData.get('care_details') as string) || undefined,
+      message: (formData.get('message') as string) || undefined,
     };
 
     const validatedData = bookingSchema.parse(data);
