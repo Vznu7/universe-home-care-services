@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { services } from '@/data/services';
-import { teamMembers } from '@/data/team';
+import { team } from '@/data/team';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.universehomecare.org';
@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  const teamRoutes = teamMembers.map((member) => ({
+  const teamRoutes = team.map((member) => ({
     url: `${baseUrl}/team/${member.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
