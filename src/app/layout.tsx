@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     title: `UNIVERSE HOME CARE SERVICES | Best Home Care in Coimbatore`,
     description: 'Universe Home Care Services provides the best home healthcare, nursing, elder care, and patient support in Coimbatore.',
   },
+  verification: {
+    google: 'nGg1zRSzn1Wb02QpDY3BjspEdGUe36-XHxM9CsR4BrM',
+  },
 };
 
 export default function RootLayout({
