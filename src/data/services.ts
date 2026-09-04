@@ -29,7 +29,7 @@ export const services = [
     id: '4',
     name: 'Advanced / Critical Care at Home',
     slug: 'advanced-critical-care-at-home',
-    description: 'ICU-level care brought directly to your doorstep. We provide high-end medical equipment, 24/7 specialized nursing, and continuous monitoring for patients requiring intensive and complex medical support.',
+    description: 'Professional-level care brought directly to your doorstep. We provide 24/7 dedicated support, specialized nursing, and continuous monitoring for patients requiring intensive and complex medical care.',
     icon: Activity,
     image: '/service-4-critical-care.jpg'
   },
